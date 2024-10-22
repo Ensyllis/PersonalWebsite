@@ -4,6 +4,8 @@ import About from '@/components/About'
 import Skills from '@/components/Skills'
 import Experience from '@/components/Experience'
 import Contact from '@/components/Contact'
+import Projects from '@/components/Projects'
+import BehavioralQA from '@/components/BehavioralQA'
 
 export default function Home() {
   return (
@@ -22,6 +24,14 @@ export default function Home() {
       
       <section id="experience" className="py-16">
         <Experience />
+      </section>
+
+      <section id="projects" className="py-16">
+        <Projects />
+      </section>
+
+      <section id="behavioral_qa" className="py-16">
+        <BehavioralQA />
       </section>
       
       <section id="contact" className="py-16">

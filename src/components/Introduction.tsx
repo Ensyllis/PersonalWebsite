@@ -81,7 +81,7 @@ const Introduction = () => {
           onMouseLeave={handleMouseLeave}
         >
           <Image
-            src="/cute_whale.png"
+            src="/separator_whale_2.png"
             alt="Cute Whale"
             fill
             className={`object-cover rounded-full transition-transform duration-300 ${flipDirection}`}

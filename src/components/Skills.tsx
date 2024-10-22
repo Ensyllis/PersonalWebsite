@@ -1,8 +1,7 @@
 'use client'
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FaPython, FaRProject, FaHtml5, FaCss3Alt, FaJsSquare, FaDocker, FaProjectDiagram, FaTree, FaDatabase, FaHandshake, FaBolt, FaCode, FaSearch, FaBrain, FaCheckCircle, FaSitemap, FaChartLine, FaShapes, FaCodeBranch, FaCalculator, FaExchangeAlt, FaCogs, FaNetworkWired, FaRobot } from 'react-icons/fa';
+import { FaPython, FaRProject, FaHtml5, FaCss3Alt, FaJsSquare, FaDocker, FaProjectDiagram, FaDatabase, FaCode, FaSearch, FaBrain, FaCheckCircle, FaSitemap, FaChartLine, FaShapes, FaCodeBranch, FaCalculator, FaExchangeAlt, FaCogs, FaNetworkWired, FaRobot } from 'react-icons/fa';
 import { SiTypescript, SiCplusplus, SiFlutter, SiDart, SiMysql, SiTensorflow, SiMongodb, SiDigitalocean, SiVercel, SiStreamlit, SiPostman, SiOpenai, SiGit, SiLinux } from 'react-icons/si';
 import { useState } from 'react';
 import { GiConfirmed, GiArtificialIntelligence, GiCog } from 'react-icons/gi';
