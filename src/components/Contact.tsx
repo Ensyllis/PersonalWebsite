@@ -3,7 +3,7 @@ const Contact = () => {
     <section className="my-16 p-8 bg-white shadow-lg rounded-xl max-w-4xl mx-auto">
       <h2 className="text-4xl font-bold mb-6 text-center text-gray-800">Get in Touch</h2>
       <p className="text-lg text-gray-600 text-center mb-10">
-        I'd love to hear from you! Whether you're interested in collaborating, discussing a project, or just saying hello, drop me a message below.
+        I&apos;d love to hear from you! Whether you&apos;re interested in collaborating, discussing a project, or just saying hello, drop me a message below.
       </p>
       <form className="space-y-6">
         <div>

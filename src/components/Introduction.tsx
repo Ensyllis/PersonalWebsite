@@ -48,10 +48,10 @@ const Introduction = () => {
         <div className="text-center lg:text-left mb-8 lg:mb-0">
           <h1 className="text-5xl font-bold mb-4">Hi, I'm Joseph 👋</h1>
           <p className="text-lg mb-4 text-gray-700">
-            I’m an End-to-End Data Solutions Architect and I love building data pipelines that solve real-world problems. Whether it’s automating workflows or creating AI-powered systems.
+            I&apos;m an End-to-End Data Solutions Architect and I love building data pipelines that solve real-world problems. Whether it&apos;s automating workflows or creating AI-powered systems.
           </p>
           <p className="text-lg mb-4 text-gray-700">
-            I’m currently an End-to-End Data Architect with a focus in NLP for a Quant Hedge Fund!
+            I&apos;m currently an End-to-End Data Architect with a focus in NLP for a Quant Hedge Fund!
           </p>
           <div className="flex justify-center lg:justify-start items-center space-x-4 mb-8">
             <div className="flex items-center">
