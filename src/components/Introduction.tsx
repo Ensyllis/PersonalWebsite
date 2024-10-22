@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import { MapPinIcon } from '@heroicons/react/24/solid'
 import { motion } from 'framer-motion'

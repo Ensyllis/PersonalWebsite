@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { FaPython, FaRProject, FaHtml5, FaCss3Alt, FaJsSquare, FaDocker, FaProjectDiagram, FaDatabase, FaCode, FaSearch, FaBrain, FaCheckCircle, FaSitemap, FaChartLine, FaShapes, FaCodeBranch, FaCalculator, FaExchangeAlt, FaCogs, FaNetworkWired, FaRobot } from 'react-icons/fa';
-import { SiTypescript, SiCplusplus, SiFlutter, SiDart, SiMysql, SiTensorflow, SiMongodb, SiDigitalocean, SiVercel, SiStreamlit, SiPostman, SiOpenai, SiGit, SiLinux } from 'react-icons/si';
+import { SiTypescript, SiCplusplus, SiFlutter, SiMysql, SiTensorflow, SiMongodb, SiDigitalocean, SiVercel, SiStreamlit, SiPostman, SiOpenai, SiGit, SiLinux } from 'react-icons/si';
 import { useState } from 'react';
 import { GiConfirmed, GiArtificialIntelligence, GiCog } from 'react-icons/gi';
 
