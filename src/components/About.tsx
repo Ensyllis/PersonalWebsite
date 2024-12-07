@@ -57,23 +57,23 @@ const About = () => {
           {/* Right Section - Text */}
           <div className="md:w-2/3 text-left">
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              I’m a full-stack data scientist with a passion for building smart, scalable data pipelines. My focus is transforming messy text data into valuable insights, especially within the finance sector.
+              I&apos;m Joseph and I love turning the unknown into the known. My curiosity and wonder drives me and lately I've developed a passion for building smart, scalable data pipelines. My focus is applying NLP to text data turning it into valuable insights.
             </p>
 
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              My journey began during a gap year where I discovered my love for finance through MIT’s open courseware. This led me to Python and soon I was blending my interests in math, finance, and coding into something meaningful.
+              My journey began during a gap year where I discovered my love for finance through MIT&apos;s Opencourseware. This led me to Finance, then Math, then Coding. Soon I was blending my interests in Math, Finance, and Coding into building meaningful products.
             </p>
 
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              Since then, I’ve had the opportunity to work on exciting projects: building data systems for Major League Baseball, developing text classification systems for research grants, and streamlining processes at a $1B hedge fund—saving researchers hours each week through automation.
+              Since then, I&apos;ve had the opportunity to work on exciting projects: building data systems for Major League Baseball, developing text classification systems for research grants, and streamlining processes at a $1B hedge fund—saving researchers hours each week through automation.
             </p>
 
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              Now, as I complete my mathematics degree with a focus on data science and statistics, I’m driven by the challenge of solving complex problems through data-driven solutions.
+              Now, as I complete my mathematics degree with a focus on data science and statistics, I&apos;m driven by the challenge of solving complex problems through data-driven solutions.
             </p>
 
             <p className="text-lg text-gray-700">
-              I’m always excited about tackling new challenges and pushing the boundaries of what data can achieve.
+              I&apos;m currently employed a Junior Quantitative Researcher and Data Scientist in a Quant Hedge Fund!
             </p>
           </div>
         </div>

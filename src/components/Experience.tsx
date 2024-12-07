@@ -5,8 +5,15 @@ import { motion } from 'framer-motion';
 
 const timelineData = [
   {
+    date: 'January 2024 - Present',
+    title: 'Junior Quantitative Researcher & Data Scientist | Bayesian Capital Management',
+    description: "This is where I work now :D. It's a little secretive right now >:3",
+    link: '/projects/quant_researcher',
+    imageUrl: '/Experience/thonk.png'
+  },
+  {
     date: 'June 2024 - August 2024',
-    title: 'AI-Powered Topic Modeling Pipeline | Bayesian Capital Management',
+    title: 'Quantitative Researcher & Data Scientists Intern | Bayesian Capital Management',
     description: 'Developed an AI-powered pipeline for a +$1B AUM Quant Hedge Fund to extract insightful topic from noisy data. The pipeline automates the processing and classification of large financial text datasets, reducing manual workload by 90% and cutting costs by 70% per dataset. Used semantic embeddings, clustering models (HDBSCAN, K-Means), and multi-AI consensus scoring to extract key insights for trading strategies. Built an interactive web platform for exploring data, enhancing research speed and accuracy.',
     link: '/projects/schonfeld-pipeline',
     imageUrl: '/Experience/Bayesian.jpeg',
@@ -44,7 +51,7 @@ const timelineData = [
     title: 'CTO | Cent Startup',
     description: 'Served as the CTO for a startup focused on providing students with easily accessible discounts. Led a dynamic development team and collaborated closely with the CEO on strategic initiatives and company direction. Spearheaded code reviews and mentored two junior front-end developers in modern web technologies. Engineered and launched a mobile application using Flutter and Dart, enhancing user engagement through an intuitive interface. Integrated Google Cloud Platform for robust mapping functionalities, enabling the app to alert users about real-time discounts and deals available nearby, particularly in dining establishments. This solution significantly improved the student experience by making discount discovery seamless and immediate.',
     link: '/projects/cent-startup',
-    imageUrl: '/path/to/image5.jpg',
+    imageUrl: '/Experience/Cent.JPEG',
   },  
   {
     date: 'August 2023 - March 2024',
@@ -105,12 +112,6 @@ const Timeline: React.FC = () => {
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
                   <p className="text-sm text-gray-500 mb-4">{item.date}</p>
                   <p className="text-gray-600 mb-4">{item.description}</p>
-                  <a
-                    href={item.link}
-                    className="inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
-                  >
-                    Learn More
-                  </a>
                 </div>
               </div>
             </div>

@@ -38,6 +38,16 @@ const Header = () => {
             </Link>
           </li>
           <li>
+            <Link href="#projects" onClick={() => scrollToSection('projects')} className="cursor-pointer hover:text-green-500 transition duration-300">
+              My Projects
+            </Link>
+          </li>
+          <li>
+            <Link href="#behavioral_qa" onClick={() => scrollToSection('behavioral_qa')} className="cursor-pointer hover:text-green-500 transition duration-300">
+              Behavioral QA
+            </Link>
+          </li>
+          <li>
             <Link href="#contact" onClick={() => scrollToSection('contact')} className="cursor-pointer hover:text-green-500 transition duration-300">
               Contact
             </Link>

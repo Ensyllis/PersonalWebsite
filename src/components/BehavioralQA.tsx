@@ -52,7 +52,7 @@ const behavioralQA = [
   },
   {
     question: "What is the riskiest thing you’ve ever done?",
-    answer: "It's difficult. There's this fine line between reasonable risk and stupidity. I was contacted by a headhunter and offered to strike up a deal with him, where I can adjust my job-finding pipeline to identify potential clients or find new clientele in exchange for a job. That was a smart risk.",
+    answer: "It's difficult. There's this fine line between reasonable risk and stupidity. I was contacted by a headhunter and offered to strike up a deal with him, where I can adjust my job-finding pipeline to identify potential clients or find new clientele in exchange for a job. That was a smart risk in my opinion.",
   },
   {
     question: "Are you more risk-averse or risk-seeking? Give me an example.",
@@ -60,7 +60,7 @@ const behavioralQA = [
   },
   {
     question: "What is your greatest weakness?",
-    answer: "Obsession. I'm like a drug addict when it comes to a problem, I get a high off being obsessed over a project, and sometimes I forget to figure out if the juice is worth the squeeze.",
+    answer: "Obsession. I'm like a drug addict when it comes to a problem, I get a high off being obsessed over a project, and sometimes I forget to figure out if the juice is worth the squeeze. I need a boss that can help me know if a task is worth being obsessed over.",
   },
   {
     question: "How do you feel about waking up early or staying up late?",
@@ -72,7 +72,7 @@ const behavioralQA = [
   },
   {
     question: "Why should we hire you?",
-    answer: "You have the infrastructure to make money off crazy ideas. I have the skills to execute crazy ideas well and need the money. Together we can help each other.",
+    answer: "You have the infrastructure to make money off crazy ideas. I have the skills to execute crazy ideas well. We both need the money and when we merge your infrastructure and my skillset lots of money can be made. Together we can help each other.",
   },
   {
     question: "What is your favorite class that you took?",

@@ -25,7 +25,7 @@ const projectsData: Project[] = [
      link: '/project-1' },
   { id: 3, 
     title: 'Built this Cute Personal Website!', 
-    description: 'I made this website using typescript, nextjs, tailwind css then deployed it onto Vercel with CI/CD. Note super sure what else to add here you feel me? Check around the website for fun!', 
+    description: 'I made this website using typescript, nextjs, tailwind css then deployed it onto Vercel with CI/CD. Not super sure what else to add here you feel me? Check around the website for fun!', 
     link: '/project-2' },
   { id: 4, 
     title: "Friend's Birthday Gift", 
@@ -78,12 +78,6 @@ const Projects: React.FC = () => {
           >
             <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
             <p className="text-gray-600">{project.description}</p>
-            <a 
-              href={project.link} 
-              className="text-blue-500 hover:underline mt-4 inline-block"
-            >
-              View Project Details
-            </a>
           </motion.div>
         ))}
       </div>
