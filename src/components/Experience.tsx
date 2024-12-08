@@ -9,7 +9,7 @@ const timelineData = [
     title: 'Junior Quantitative Researcher & Data Scientist | Bayesian Capital Management',
     description: "This is where I work now :D. It's a little secretive right now >:3",
     link: '/projects/quant_researcher',
-    imageUrl: '/Experience/thonk.png'
+    imageUrl: '/Experience/Thonk.png'
   },
   {
     date: 'June 2024 - August 2024',
