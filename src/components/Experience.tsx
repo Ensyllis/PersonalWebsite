@@ -1,7 +1,8 @@
 'use client'
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const timelineData = [
   {
@@ -78,48 +79,117 @@ const timelineData = [
 
 
 const Timeline: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
+
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setCurrentIndex((prevIndex) => {
+      let nextIndex = prevIndex + newDirection;
+      if (nextIndex < 0) nextIndex = timelineData.length - 1;
+      if (nextIndex >= timelineData.length) nextIndex = 0;
+      return nextIndex;
+    });
+  };
+
   return (
     <div className="max-w-6xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">Experience Timeline</h2>
-      <div className="relative">
-        {/* Timeline line */}
-        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-200"></div>
+      
+      <div className="relative h-[600px]">
+        {/* Navigation Buttons - Moved outside AnimatePresence and increased z-index */}
+        <button
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30"
+          onClick={(e) => {
+            e.stopPropagation();
+            paginate(-1);
+          }}
+          aria-label="Previous"
+        >
+          <FaChevronLeft className="w-6 h-6 text-gray-600" />
+        </button>
+        
+        <button
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30"
+          onClick={(e) => {
+            e.stopPropagation();
+            paginate(1);
+          }}
+          aria-label="Next"
+        >
+          <FaChevronRight className="w-6 h-6 text-gray-600" />
+        </button>
 
-        {timelineData.map((item, index) => (
-          <motion.div
-            key={index}
-            className={`mb-12 md:mb-24 flex flex-col md:flex-row items-center ${
-              index % 2 === 0 ? 'md:flex-row-reverse' : ''
-            }`}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            {/* Timeline dot */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-4 md:translate-y-0 flex items-center justify-center">
-              <div className="w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow-md"></div>
-            </div>
-
-            {/* Content card */}
-            <div className="w-full md:w-5/12 mb-8 md:mb-0">
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+        <div className="overflow-hidden h-full">
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={currentIndex}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 }
+              }}
+              className="absolute w-full h-full"
+            >
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl mx-auto">
                 <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="w-full h-48 object-cover"
+                  src={timelineData[currentIndex].imageUrl}
+                  alt={timelineData[currentIndex].title}
+                  className="w-full h-64 object-cover"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-500 mb-4">{item.date}</p>
-                  <p className="text-gray-600 mb-4">{item.description}</p>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {timelineData[currentIndex].title}
+                  </h3>
+                  <p className="text-lg text-gray-500 mb-4">
+                    {timelineData[currentIndex].date}
+                  </p>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    {timelineData[currentIndex].description}
+                  </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-            {/* Spacer for alignment */}
-            <div className="hidden md:block w-2/12"></div>
-          </motion.div>
-        ))}
+        {/* Progress Indicators */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
+          {timelineData.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setDirection(index > currentIndex ? 1 : -1);
+                setCurrentIndex(index);
+              }}
+              className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
