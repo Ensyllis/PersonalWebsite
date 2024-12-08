@@ -77,116 +77,125 @@ const timelineData = [
   },
 ];
 
-
 const Timeline: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  
+  const itemsToShow = 3;
+  const maxStartIndex = timelineData.length - itemsToShow;
+
+  const getCurrentItems = () => {
+    return timelineData.slice(startIndex, startIndex + itemsToShow);
+  };
+
+  const handleNext = () => {
+    if (startIndex < maxStartIndex) {
+      setDirection(1);
+      setStartIndex(prev => prev + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (startIndex > 0) {
+      setDirection(-1);
+      setStartIndex(prev => prev - 1);
+    }
+  };
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: direction > 0 ? 500 : -500,
       opacity: 0
     }),
     center: {
-      zIndex: 1,
       x: 0,
       opacity: 1
     },
     exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: direction < 0 ? 500 : -500,
       opacity: 0
     })
   };
 
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setCurrentIndex((prevIndex) => {
-      let nextIndex = prevIndex + newDirection;
-      if (nextIndex < 0) nextIndex = timelineData.length - 1;
-      if (nextIndex >= timelineData.length) nextIndex = 0;
-      return nextIndex;
-    });
-  };
-
   return (
-    <div className="max-w-6xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">Experience Timeline</h2>
       
-      <div className="relative h-[600px]">
-        {/* Navigation Buttons - Moved outside AnimatePresence and increased z-index */}
+      <div className="relative">
         <button
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30"
-          onClick={(e) => {
-            e.stopPropagation();
-            paginate(-1);
-          }}
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={handlePrev}
+          disabled={startIndex === 0}
           aria-label="Previous"
         >
           <FaChevronLeft className="w-6 h-6 text-gray-600" />
         </button>
         
         <button
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30"
-          onClick={(e) => {
-            e.stopPropagation();
-            paginate(1);
-          }}
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={handleNext}
+          disabled={startIndex === maxStartIndex}
           aria-label="Next"
         >
           <FaChevronRight className="w-6 h-6 text-gray-600" />
         </button>
 
-        <div className="overflow-hidden h-full">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
-              }}
-              className="absolute w-full h-full"
-            >
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl mx-auto">
-                <img
-                  src={timelineData[currentIndex].imageUrl}
-                  alt={timelineData[currentIndex].title}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {timelineData[currentIndex].title}
-                  </h3>
-                  <p className="text-lg text-gray-500 mb-4">
-                    {timelineData[currentIndex].date}
-                  </p>
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    {timelineData[currentIndex].description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+        <div className="overflow-hidden">
+          <div className="flex justify-center gap-6 relative">
+            <AnimatePresence initial={false} mode="popLayout">
+              {getCurrentItems().map((item, index) => (
+                <motion.div
+                  key={startIndex + index}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 }
+                  }}
+                  className="w-full max-w-sm flex-shrink-0"
+                >
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full">
+                    <img
+                      src={item.imageUrl}
+                      alt={item.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 mb-4">
+                        {item.date}
+                      </p>
+                      <p className="text-gray-600 text-sm line-clamp-4">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Progress Indicators */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
+        <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
           {timelineData.map((_, index) => (
             <button
               key={index}
               onClick={() => {
-                setDirection(index > currentIndex ? 1 : -1);
-                setCurrentIndex(index);
+                setDirection(index > startIndex ? 1 : -1);
+                setStartIndex(Math.min(Math.max(0, index), maxStartIndex));
               }}
-              className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
+              className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                index >= startIndex && index < startIndex + itemsToShow 
+                  ? 'bg-blue-500 w-4' 
+                  : 'bg-gray-300'
               }`}
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={`Go to item ${index + 1}`}
             />
           ))}
         </div>
