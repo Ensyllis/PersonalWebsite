@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Import icons from react-icons
 
@@ -97,62 +97,67 @@ const behavioralQA = [
 ];
 
 const BehavioralQA = () => {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
-  
-    const toggleQA = (index: number) => {
-      setOpenIndex(openIndex === index ? null : index);
-    };
-  
-    return (
-      <section className="max-w-4xl mx-auto my-10 p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold mb-6">
-          Behavioral QA [If you want to know more about me!]
-        </h2>
-        <div className="space-y-6">
-          {behavioralQA.map((item, index) => (
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  return (
+    <section className="max-w-6xl mx-auto p-6">
+      <h2 className="text-3xl font-bold mb-8 text-center">
+        Get to Know Me Better
+      </h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {behavioralQA.map((item, index) => (
+          <div key={index} className="contents">
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="p-4 border border-gray-200 rounded-md cursor-pointer"
-              onClick={() => toggleQA(index)}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className={`
+                relative group 
+                ${hoveredIndex !== null && hoveredIndex < index ? 'translate-y-40' : ''}
+                transition-transform duration-300
+              `}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="flex justify-between items-center">
-                <h3 className="text-xl font-semibold text-grey-600">
+              <div className={`
+                bg-white rounded-lg shadow-sm group-hover:shadow-md 
+                transition-all duration-300 p-4
+                ${hoveredIndex === index ? 'bg-gray-50 rounded-b-none' : ''}
+              `}>
+                <h3 className="text-lg font-medium text-gray-700 line-clamp-2 pr-4">
                   {item.question}
                 </h3>
-                <motion.div
-                  initial={{ rotate: 0 }}
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {openIndex === index ? (
-                    <FaChevronUp className="text-gray-500" />
-                  ) : (
-                    <FaChevronDown className="text-gray-500" />
-                  )}
-                </motion.div>
               </div>
-  
+
               <AnimatePresence>
-                {openIndex === index && (
-                  <motion.p
+                {hoveredIndex === index && (
+                  <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.4 }} // Smooth transition on collapse
-                    className="mt-2 text-gray-700"
+                    transition={{ duration: 0.2 }}
+                    className="
+                      bg-white shadow-md rounded-b-lg overflow-hidden
+                      border-t border-gray-100
+                    "
                   >
-                    {item.answer}
-                  </motion.p>
+                    <div className="p-6 max-h-[40vh] overflow-y-auto">
+                      <div className="prose prose-sm max-w-none">
+                        <p className="text-gray-600 whitespace-pre-wrap">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
-          ))}
-        </div>
-      </section>
-    );
-  };
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default BehavioralQA;
