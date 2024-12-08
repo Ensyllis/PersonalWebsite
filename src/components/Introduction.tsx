@@ -46,7 +46,7 @@ const Introduction = () => {
         
         {/* Left side - Text/Description */}
         <div className="text-center lg:text-left mb-8 lg:mb-0">
-          <h1 className="text-5xl font-bold mb-4">Hi, I'm Joseph 👋</h1>
+          <h1 className="text-5xl font-bold mb-4">Hi, I&apos;m Joseph 👋</h1>
           <p className="text-lg mb-4 text-gray-700">
             Curiosity-Driven individual who has a love for interesting things. Interested in Building Data Pipelines, Natural Language Processing, Start-Ups and Generating Alpha.
           </p>

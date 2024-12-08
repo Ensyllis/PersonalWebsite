@@ -57,7 +57,7 @@ const About = () => {
           {/* Right Section - Text */}
           <div className="md:w-2/3 text-left">
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              I&apos;m Joseph and I love turning the unknown into the known. My curiosity and wonder drives me and lately I've developed a passion for building smart, scalable data pipelines. My focus is applying NLP to text data turning it into valuable insights.
+              I&apos;m Joseph and I love turning the unknown into the known. My curiosity and wonder drives me and lately I&apos;ve developed a passion for building smart, scalable data pipelines. My focus is applying NLP to text data turning it into valuable insights.
             </p>
 
             <p className="mb-6 text-lg leading-relaxed text-gray-700">

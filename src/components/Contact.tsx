@@ -18,9 +18,9 @@ const Contact = () => {
 
   return (
     <section className="my-16 p-8 bg-white shadow-lg rounded-xl max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold mb-6 text-center text-gray-800">Let's Connect</h2>
+      <h2 className="text-4xl font-bold mb-6 text-center text-gray-800">Let&apos;s Connect</h2>
       <p className="text-lg text-gray-600 text-center mb-10">
-        I'd love to chat about opportunities, collaborations, or interesting projects. 
+        I&apos;d love to chat about opportunities, collaborations, or interesting projects. 
         Schedule a time that works best for you!
       </p>
       
