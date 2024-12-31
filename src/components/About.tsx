@@ -56,7 +56,7 @@ const About = () => {
           
           {/* Right Section - Text */}<div className="md:w-2/3 text-left">
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              Hi! I&apos;m Joseph, a Junior Quant Researcher at Bayesian Capital Management. My journey into data science and quant research began with a curiosity for solving complex problems and a love for storytelling through data.
+              I&apos;m Joseph, a Junior Quant Researcher at Bayesian Capital Management. My journey into data science and junior quant research began with a curiosity for solving complex problems and a love for storytelling through data.
             </p>
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
               I specialize in natural language processing (NLP) and machine learning, using techniques like semantic embeddings, clustering, and dimensionality reduction to uncover insights. One of my proudest achievements was building an LLM system during my internship that automated data classification, saving researchers hours at a multi-billion dollar hedge fund.
