@@ -21,7 +21,7 @@ const About = () => {
   return (
     <section className="my-12 px-4 lg:px-0">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-8">My Story</h2>
+        <h2 className="text-3xl font-bold mb-8">About</h2>
         <div className="flex flex-col md:flex-row items-center gap-12">
           
           {/* Left Section - Profile Picture */}
@@ -45,7 +45,7 @@ const About = () => {
               onMouseLeave={handleMouseLeave}
             >
               <Image
-                src="/profile.jpeg"
+                src="/profile_3.jpg"
                 alt="About me"
                 fill
                 className={`object-cover rounded-full shadow-lg transition-transform duration-500 ${flipDirection}`}
@@ -54,30 +54,42 @@ const About = () => {
             </div>
           </div>
           
-          {/* Right Section - Text */}
-          <div className="md:w-2/3 text-left">
+          {/* Right Section - Text */}<div className="md:w-2/3 text-left">
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              I&apos;m Joseph and I love turning the unknown into the known. My curiosity and wonder drives me and lately I&apos;ve developed a passion for building smart, scalable data pipelines. My focus is applying NLP to text data turning it into valuable insights.
+              Hi! I&apos;m Joseph, a Junior Quant Researcher at Bayesian Capital Management. My journey into data science and quant research began with a curiosity for solving complex problems and a love for storytelling through data.
             </p>
-
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              My journey began during a gap year where I discovered my love for finance through MIT&apos;s Opencourseware. This led me to Finance, then Math, then Coding. Soon I was blending my interests in Math, Finance, and Coding into building meaningful products.
+              I specialize in natural language processing (NLP) and machine learning, using techniques like semantic embeddings, clustering, and dimensionality reduction to uncover insights. One of my proudest achievements was building an LLM system during my internship that automated data classification, saving researchers hours at a multi-billion dollar hedge fund.
             </p>
-
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              Since then, I&apos;ve had the opportunity to work on exciting projects: building data systems for Major League Baseball, developing text classification systems for research grants, and streamlining processes at a $1B hedge fund—saving researchers hours each week through automation.
+              What drives me is the challenge of turning raw data into actionable insights—whether it&apos;s optimizing trading strategies, streamlining research workflows, or exploring the latest advancements in AI.
             </p>
-
             <p className="mb-6 text-lg leading-relaxed text-gray-700">
-              Now, as I complete my mathematics degree with a focus on data science and statistics, I&apos;m driven by the challenge of solving complex problems through data-driven solutions.
+              Outside of work, I&apos;m a lifelong learner with interests in history, psychology, and philosophy. You&apos;ll often find me sipping tea, reading a book, or experimenting in the kitchen. I believe that curiosity and creativity are the keys to solving the world&apos;s most interesting problems.
             </p>
-
             <p className="text-lg text-gray-700">
-              I&apos;m currently employed a Junior Quantitative Researcher and Data Scientist in a Quant Hedge Fund!
+              Let&apos;s connect! Reach me at joseph@bayesian.capital.
             </p>
+            <div className="mt-8">
+              <h3 className="text-xl font-bold mb-4">My Journey</h3>
+              <ul className="space-y-4 text-gray-700">
+                <li>
+                  <span className="font-bold">2024</span> - Junior Quant Researcher at Bayesian Capital Management. Built an AI pipeline for a multi-billion dollar hedge fund, automating data classification and reducing costs by 70%.
+                </li>
+                <li>
+                  <span className="font-bold">2023</span> - Founded Anchor AI, developed a Markov chain model for ancient Rome research, and led a data science team for the Arizona Diamondbacks Consultant. Also served as CTO at Cent Startup and Founded Marketing Initiative at Biola QCC.
+                </li>
+                <li>
+                  <span className="font-bold">2022</span> - Conducted research on the stable marriage problem and engineered an XML parsing system for archaeological research data.
+                </li>
+                <li>
+                  <span className="font-bold">2021</span> - Discovered my passion for data, math, and finance during a transformative gap year.
+                </li>
+              </ul>
+            </div>
+          </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };

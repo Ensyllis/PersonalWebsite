@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 const timelineData = [
   {
@@ -11,6 +11,13 @@ const timelineData = [
     description: "This is where I work now :D. It's a little secretive right now >:3",
     link: '/projects/quant_researcher',
     imageUrl: '/Experience/Thonk.png'
+  },
+  {
+    date: 'August 2024 - December 2024',
+    title: 'Research Lead for Medival Age Stylometry | Biola University',
+    description: "Researched, designed, and built a stylometry pipeline based on a published model (arXiv:2310.11081) to perform author attribution on unknown medieval texts. This pipeline was used to identify contested works by analyzing writing styles, contributing to historical and literary research.",
+    link: '/projects/Stylometry',
+    imageUrl: '/Experience/Stylometry.png'
   },
   {
     date: 'June 2024 - August 2024',
@@ -80,6 +87,7 @@ const timelineData = [
 const Timeline: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [expandedItems, setExpandedItems] = useState<number[]>([]);
   
   const itemsToShow = 3;
   const maxStartIndex = timelineData.length - itemsToShow;
@@ -100,6 +108,14 @@ const Timeline: React.FC = () => {
       setDirection(-1);
       setStartIndex(prev => prev - 1);
     }
+  };
+
+  const toggleExpand = (index: number) => {
+    setExpandedItems(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
   };
 
   const slideVariants = {
@@ -170,9 +186,28 @@ const Timeline: React.FC = () => {
                       <p className="text-sm text-gray-500 mb-4">
                         {item.date}
                       </p>
-                      <p className="text-gray-600 text-sm line-clamp-4">
-                        {item.description}
-                      </p>
+                      <div className="relative">
+                        <p className={`text-gray-600 text-sm ${!expandedItems.includes(startIndex + index) ? 'line-clamp-4' : ''}`}>
+                          {item.description}
+                        </p>
+                        <button
+                          onClick={() => toggleExpand(startIndex + index)}
+                          className="mt-2 text-blue-500 hover:text-blue-600 flex items-center gap-1 text-sm font-medium"
+                          aria-label={expandedItems.includes(startIndex + index) ? "Show less" : "Show more"}
+                        >
+                          {expandedItems.includes(startIndex + index) ? (
+                            <>
+                              Show less
+                              <FaChevronUp className="w-4 h-4" />
+                            </>
+                          ) : (
+                            <>
+                              Show more
+                              <FaChevronDown className="w-4 h-4" />
+                            </>
+                          )}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
