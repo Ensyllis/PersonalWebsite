@@ -74,7 +74,7 @@ const About = () => {
               <h3 className="text-xl font-bold mb-4">My Journey</h3>
               <ul className="space-y-4 text-gray-700">
                 <li>
-                  <span className="font-bold">2024</span> - Junior Quant Researcher at Bayesian Capital Management. Built an AI pipeline for a multi-billion dollar hedge fund, automating data classification and reducing costs by 70%.
+                  <span className="font-bold">2024</span> - Junior Quant Researcher at Bayesian Capital Management. Built an AI pipeline for a multi-billion dollar hedge fund, automating data classification and saved hundreds of hours for analyzing each dataset -- forever.
                 </li>
                 <li>
                   <span className="font-bold">2023</span> - Founded Anchor AI, developed a Markov chain model for ancient Rome research, and led a data science team for the Arizona Diamondbacks Consultant. Also served as CTO at Cent Startup and Founded Marketing Initiative at Biola QCC.
