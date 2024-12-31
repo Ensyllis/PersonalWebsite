@@ -31,7 +31,7 @@ const Introduction = () => {
             Currently, I&apos;m a Junior Quant Researcher at a Buy-Side Quant Hedge Fund, where I focus on applying NLP and machine learning to optimize trading strategies and research workflows.
           </p>
           <p className="text-lg mb-4 text-gray-700">
-            When I&apos;m not coding or analyzing data, you'll find me sipping tea, reading, or experimenting in the kitchen.
+            When I&apos;m not coding or analyzing data, you&apos;ll find me sipping tea, reading, or experimenting in the kitchen.
           </p>
           <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-4 mb-8">
             <div className="flex items-center justify-center lg:justify-start">
