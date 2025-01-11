@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
@@ -84,16 +84,58 @@ const timelineData = [
   },
 ];
 
+
 const Timeline: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
-  
-  const itemsToShow = 3;
+  const [isMobile, setIsMobile] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Handle responsive layout
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const itemsToShow = isMobile ? 1 : 3;
   const maxStartIndex = timelineData.length - itemsToShow;
 
   const getCurrentItems = () => {
     return timelineData.slice(startIndex, startIndex + itemsToShow);
+  };
+
+  // Touch handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && startIndex < maxStartIndex) {
+      handleNext();
+    }
+    if (isRightSwipe && startIndex > 0) {
+      handlePrev();
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   const handleNext = () => {
@@ -134,30 +176,40 @@ const Timeline: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">Experience Timeline</h2>
       
       <div className="relative">
-        <button
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30 disabled:opacity-50 disabled:cursor-not-allowed"
-          onClick={handlePrev}
-          disabled={startIndex === 0}
-          aria-label="Previous"
-        >
-          <FaChevronLeft className="w-6 h-6 text-gray-600" />
-        </button>
-        
-        <button
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30 disabled:opacity-50 disabled:cursor-not-allowed"
-          onClick={handleNext}
-          disabled={startIndex === maxStartIndex}
-          aria-label="Next"
-        >
-          <FaChevronRight className="w-6 h-6 text-gray-600" />
-        </button>
+        {/* Only show navigation buttons on desktop */}
+        {!isMobile && (
+          <>
+            <button
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30 disabled:opacity-50 disabled:cursor-not-allowed hidden md:block"
+              onClick={handlePrev}
+              disabled={startIndex === 0}
+              aria-label="Previous"
+            >
+              <FaChevronLeft className="w-6 h-6 text-gray-600" />
+            </button>
+            
+            <button
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200 z-30 disabled:opacity-50 disabled:cursor-not-allowed hidden md:block"
+              onClick={handleNext}
+              disabled={startIndex === maxStartIndex}
+              aria-label="Next"
+            >
+              <FaChevronRight className="w-6 h-6 text-gray-600" />
+            </button>
+          </>
+        )}
 
-        <div className="overflow-hidden">
-          <div className="flex justify-center gap-6 relative">
+        <div 
+          className="overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className={`flex justify-center ${isMobile ? 'gap-0' : 'gap-6'} relative`}>
             <AnimatePresence initial={false} mode="popLayout">
               {getCurrentItems().map((item, index) => (
                 <motion.div
@@ -171,7 +223,7 @@ const Timeline: React.FC = () => {
                     x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.2 }
                   }}
-                  className="w-full max-w-sm flex-shrink-0"
+                  className={`flex-shrink-0 ${isMobile ? 'w-full' : 'w-full max-w-sm'}`}
                 >
                   <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full">
                     <img

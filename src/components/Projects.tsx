@@ -29,7 +29,7 @@ const projectsData: Project[] = [
     link: '/project-2' },
   { id: 4, 
     title: "Friend's Birthday Gift", 
-    description: 'For my friend I created a cute typescript website that had everything she liked, and some things I am grateful about for her. It is her birthday present so I cannot show >:3 it is just for her eyes only', 
+    description: 'For my friend I created a cute typescript website that had everything they liked, and some things I am grateful about for them. It is their birthday present so I cannot show >:3 it is just for their eyes only', 
     link: '/project-3' },
   { id: 5, 
     title: 'Analysis of Data Science and Statistics Job Market', 
