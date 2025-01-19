@@ -11,6 +11,11 @@ interface Project {
 }
 
 const projectsData: Project[] = [
+  { id: -1, 
+    title: "Built a Better ATS System",
+    description: "Created a semantic-first ATS system that understands resume context instead of just counting keywords. Used Claude 3.5 for story extraction, VoyageAI for semantic embeddings, and Qdrant for vector search. Built with TypeScript/React frontend and Python/FastAPI backend, containerized with Docker and deployed on DigitalOcean. Try it out at http://192.34.61.136:3000 or check the code at https://github.com/Ensyllis/SemanticATS",
+    link: '/project-semantic-ats' 
+  },
   { id: 0, 
     title: "Stylometry on Medieval Age Authors",
     description: "Joined a Research Group where we had to do Stylometry on Roberta and Transformer models. Using Hugging Face Semantic Embedding models (RoBERTa), we had to fine-tun the model, then running it on a virtual machine. Then we used Contrastive Learning to do inference to identify potential unknown texts for Authorship Attribution based on writing style.",
