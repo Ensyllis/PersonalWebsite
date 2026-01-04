@@ -20,7 +20,7 @@ const Introduction = () => {
         
         {/* Right side - Text/Description */}
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold mb-4">Hi, I&apos;m Joseph!</h1>
+          <h1 className="text-5xl font-bold mb-4 text-black">Hi, I&apos;m Joseph!</h1>
           <p className="text-lg mb-4 text-gray-700">
             I&apos;m a full-stack data scientist and junior quant researcher with a passion for building end-to-end solutions. From back-end (Python) to front-end (TypeScript/JavaScript, HTML/CSS), and from databases (MongoDB, SQL) to DevOps (Docker, CI/CD, Microservice), I thrive on turning complex problems into scalable systems.
           </p>

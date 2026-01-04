@@ -6,19 +6,30 @@ import Experience from '@/components/Experience'
 import Contact from '@/components/Contact'
 import Projects from '@/components/Projects'
 import BehavioralQA from '@/components/BehavioralQA'
+import BlogCarousel from '@/components/BlogCarousel'
+import { getRecentPosts } from '@/lib/blog'
 
 export default function Home() {
+  const recentPosts = getRecentPosts(3)
+
   return (
-    <main className="bg-gray-100 text-gray-900">
+    <main className="bg-gray-100 text-black-900">
       {/* Fixed Header */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-gray-100">
         <Header />
       </div>
-      
+
       {/* Add padding to prevent content from hiding under fixed header */}
       <div className="pt-20">
         <Introduction />
-        
+
+        {/* Blog Carousel Section */}
+        {recentPosts.length > 0 && (
+          <section className="py-16">
+            <BlogCarousel posts={recentPosts} />
+          </section>
+        )}
+
         <section id="about" className="py-16">
           <About />
         </section>

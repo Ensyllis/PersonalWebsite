@@ -21,23 +21,24 @@ const Header = () => {
     { href: '#experience', text: 'Experience' },
     { href: '#projects', text: 'My Projects' },
     { href: '#behavioral_qa', text: 'Behavioral QA' },
+    { href: '/blog', text: 'Blog', isExternal: true },
     { href: '#contact', text: 'Contact' },
   ]
 
   return (
-    <header className="relative bg-gray-100 w-full">
+    <header className="relative bg-inherit w-full">
       <div className="flex justify-between items-center py-6 px-8">
         {/* Logo/Title on the left */}
         <Link href="/">
-          <div className="text-2xl font-bold hover:text-blue-500 transition duration-200">
+          <div className="text-2xl font-bold text-black hover:text-blue-500 transition duration-200">
             Joseph Shalom Liu
           </div>
         </Link>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden"
+          className="lg:hidden text-black"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -49,8 +50,12 @@ const Header = () => {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  onClick={() => scrollToSection(link.href.slice(1))}
-                  className="cursor-pointer hover:text-green-500 transition duration-300"
+                  onClick={(e) => {
+                    if (!link.isExternal) {
+                      scrollToSection(link.href.slice(1))
+                    }
+                  }}
+                  className="cursor-pointer text-black hover:text-green-500 transition duration-300"
                 >
                   {link.text}
                 </Link>
@@ -62,7 +67,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       <nav
-        className={`lg:hidden absolute w-full bg-gray-100 shadow-lg transition-all duration-300 ease-in-out ${
+        className={`lg:hidden absolute w-full bg-inherit shadow-lg transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
         }`}
       >
@@ -71,8 +76,14 @@ const Header = () => {
             <li key={link.href} className="py-2">
               <Link
                 href={link.href}
-                onClick={() => scrollToSection(link.href.slice(1))}
-                className="block cursor-pointer hover:text-green-500 transition duration-300"
+                onClick={() => {
+                  if (!link.isExternal) {
+                    scrollToSection(link.href.slice(1))
+                  } else {
+                    setIsMenuOpen(false)
+                  }
+                }}
+                className="block cursor-pointer text-black hover:text-green-500 transition duration-300"
               >
                 {link.text}
               </Link>
